@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.navbar {
+    color: black;
+}
+
+.section {
+    color: black;
+    text-align: center;
+    padding: 20px;
+}
+
+.button {
+    padding: 20px;
+}
+
+.footer {
+    color: black;
+    text-align: center;
+}
