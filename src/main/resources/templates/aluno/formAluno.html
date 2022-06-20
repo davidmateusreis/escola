@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <title>Cadastrar Alunos</title>
+</head>
+
+<body>
+    <div th:replace="fragments/fragments :: cabecalho"></div>
+    <div class="container">
+        <h4>Cadastrar Alunos</h4>
+        <hr>
+        <form method="POST" action="/cadastrarnovo" th:object="${aluno}">
+            <div class="row"></div>
+            <div class="col-md-6 form-group offset-md-3">
+                <label>Nome do Aluno</label>
+                <input class="form-control" type="text" placeholder="Ex: David Mateus" th:field="*{nome}">
+            </div>
+            <div class="row"></div>
+            <div class="col-md-6 form-group offset-md-3">
+                <label>Selecione o Curso:</label>
+                <select class="form-control" th:field="*{curso}">
+                    <option th:each="curso : ${T(com.david.escola.enums.Curso).values()}" th:value="${curso}"
+                        th:text="${curso}"></option>
+                </select>
+                <div class="row"></div>
+                <div class="col-md-6 form-group offset-md-3">
+                    <label>Gerar Matrícula:</label>
+                    <input class="form-control" id="matricula" th:field="*{matricula}">
+                    <button type="button" onclick="GerarMatricula();" class="btn btn-primary">Gerar</button>
+                    <div class="row"></div>
+                    <div class="col-md-6 form-group offset-md-3">
+                        <label>Selecione o Status:</label>
+                        <select class="form-control" th:field="*{status}">
+                            <option th:each="status : ${T(com.david.escola.enums.Status).values()}" th:value="${status}"
+                                th:text="${status}"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row"></div>
+            <div class="col-md-6 form-group offset-md-3">
+                <label>Turno</label>
+                <input class="form-control" type="text" placeholder="Ex: Diurno" th:field="*{turno}">
+            </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <a class="btn btn-danger">Voltar</a>
+                </div>
+        </form>
+    </div>
+    <div th:replace="fragments/fragments :: rodape"></div>
+</body>
+
+</html>
